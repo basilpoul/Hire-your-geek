@@ -1,0 +1,79 @@
+{% extends "commonbasecoder.html" %}
+{% block content3 %}
+<style>
+    th,td{
+        padding: 10px;
+        color:rgb(0, 0, 0)
+    }
+    th{
+        background-color:rgb(0, 0, 0);
+        color: white;
+    }
+    table{
+      margin-bottom: -50px;
+    }
+    </style>
+    <div style="margin: 50px; background-color: rgb(187, 223, 255);opacity: 85%;">
+        <h1 style="margin: 10px;color:black">My Works</h1>
+        <table border="1" style="margin-top: 40px;margin-left: 80px;">
+        <tr>
+            <th>BUYER NAME</th>
+            
+            <th>EMAIL</th>
+            <th>CONTACT</th>
+            <th>TITLE</th>
+            <!-- <th>DESCRIPTION</th> -->
+            <th>DUE DATE</th>
+            <th>SYNOPSIS</th>
+            <th>AMOUNT</th>
+            <th>CHAT</th>
+            <th>STATUS</th>
+          <th colspan="4">ACTION</th>
+         
+            {% comment %} <th colspan="2">ACTION</th> {% endcomment %}
+        </tr>
+    
+   {% for d in data %}
+      <tr>
+
+        <td>{{d.userid.name}}</td>
+       
+        <td>{{d.userid.email}}</td>
+        <td>{{d.userid.contact}}</td>
+        <td>{{d.title}}</td>
+        <td>{{d.tforw}}</td>
+        <!-- <td>{{d.15}}</td> -->
+
+   <td><a href="../static/media/{{d.bidid.rid.rfile}}" download><img src="../static/media/{{d.bidid.rid.rfile}}" download="../static{{d.10}}" height="200px" width="200px"></a></td> 
+   <td>{{d.amount}}</td> 
+   <td><a href="/sfChatPer?email={{d.userid.email}}">Chat</a></td>
+   <td>{{d.status}}</td> 
+   {% if d.status == 'confirmed' %} 
+   <td><a href="/coderupdatework?bidid={{d.bidid.id}}&status=25 percent completed" style="color:red">25%</a></td>
+   {% endif %}
+   {% if d.status == '25 percent completed' %}
+   <td><a href="/coderupdatework?bidid={{d.bidid.id}}&status=50 percent completed" style="color:red">50%</a></td>
+  {% endif %}
+  {% if d.status == '50 percent completed' %}
+   <td><a href="/coderupdatework?bidid={{d.bidid.id}}&status=75 percent completed" style="color:red">75%</a></td>
+   {% endif %}
+  {% if d.status == '75 percent completed' %}
+   <td><a href="/coderupdatework?bidid={{d.bidid.id}}&status=100 percent completed" style="color:red">100%</a></td>
+   {% endif %}
+   {% comment %}      <td><a href="../static{{d.9}}" download><img src="../static{{d.9}}" download="../static{{d.9}}" height="200px" width="200px"></a></td> 
+   {% endcomment %}
+             
+           
+         
+                {% comment %} <td><a href="/adminupdatebuyer?uemail={{d.3}}&&status=1" style="color:green">Approve</a></td>
+             <td><a href="/adminupdatecust?uemail={{d.3}}&&status=-1" style="color:red">Reject</a></td> {% endcomment %}
+    
+    </tr>
+      {% endfor %}
+  
+        </table>
+    </div>
+
+
+    </div>
+{% endblock %}

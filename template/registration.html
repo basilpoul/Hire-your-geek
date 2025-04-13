@@ -1,0 +1,65 @@
+{% extends "commonbase.html" %}
+{% block content1 %}
+
+
+ 
+    
+
+
+
+
+
+
+
+
+    
+    <section class="w3l-contact py-5" id="contact">
+        <div class="container py-lg-5 py-4">
+            <div class="title-heading-w3 text-center mb-sm-5 mb-4">
+                <h2>REGISTRATION</h2>
+            </div>
+            <div class="row contact-block">
+                
+
+
+
+                <div class="col-md-6 contact-center" style="margin: auto;">
+                    <form enctype="multipart/form-data" method="post" class="signin-form">
+                        {% csrf_token %}
+                            <input type="text" name="name" id="w3lName" placeholder="Your Name*"
+                                class="contact-input" required="" />
+                            <input type="email" name="email" id="w3lSender" placeholder="Your Email*"
+                                class="contact-input" required="" />
+                            <input type="text" name="contact" pattern="[789][0-9]{9}" id="w3lSubect" placeholder="Your Contact*"
+                                class="contact-input" required="" />
+                            <input type="password" name="psw" id="w3lWebsite" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"  placeholder="Your Password*"
+                                class="contact-input" required="" />
+                        
+                        <div class="form-input">
+                            <textarea name="add" id="w3lMessage" placeholder="Address*"
+                                required=""></textarea>
+                        </div>
+                        <button class="btn btn-style">Register</button>
+                    </form>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+ 
+
+
+    
+
+    {% if messages %}
+    {% for msg in messages %}
+    <script>alert('{{msg}}')</script>
+    {% endfor %}
+    {% endif %}
+
+
+
+{% endblock %}
+

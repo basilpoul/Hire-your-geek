@@ -1,0 +1,110 @@
+{% extends "commonbasecoder.html" %}
+{% block content3 %}
+
+
+
+    <!-- contact page -->
+    <!-- <section class="w3l-contact-11 py-5" id="contact">
+        <div class="container py-md-5 py-5">
+            <div class="row justify-content-center text-center">
+                <div class="col-md-8">
+                    <div class="section-heading mb-sm-5 mb-4"> -->
+                    <center>    <h3 class="title-style mb-2 bg-light">UPDATE PROFILE</h3></center>
+    <!--                     
+                    </div>
+                </div>
+            </div>
+    -->
+
+            <!-- <div class="d-grid contact section-gap">
+                <div class="contact-info-left d-grid text-center">
+                    <div class="contact-info">
+                        <span class="fa fa-map-marker" aria-hidden="true"></span>
+                        <h4>Location</h4>
+                        <p>Dolor sit, #PTH,8800 Honey Street UK.</p>
+                    </div>
+                    <div class="contact-info">
+                        <span class="fa fa-phone" aria-hidden="true"></span>
+                        <h4>Phone</h4>
+                        <p><a href="tel:+44 7834 857829">+22 123 984 434</a></p>
+                        <p><a href="tel:+44 987 654 321">+44 123 984 439</a></p>
+                    </div>
+                    <div class="contact-info">
+                        <span class="fa fa-envelope" aria-hidden="true"></span>
+                        <h4>Email</h4>
+                        <p><a href="mailto:mail@example.com" class="email">mail@example.com</a></p>
+                        <p><a href="mailto:mail@example1.com" class="email">mail@example1.com</a></p>
+                    </div>
+                    <div class="contact-info">
+                        <span class="fa fa-clock-o" aria-hidden="true"></span>
+                        <h4>Working Hours</h4>
+                        <p>Wednesday - Sunday</p>
+                        <p>7:00 AM - 9:00 PM</p>
+                    </div>
+                </div>
+            </div> -->
+
+            
+
+        
+        <section class="w3l-contact py-5" id="contact">
+            <div class="container py-lg-5 py-4">
+                <div class="title-heading-w3 text-center mb-sm-5 mb-4">
+                    <h2></h2>
+                </div>
+                <div class="row contact-block">
+                    
+
+                    {% for d in data %}
+
+                    <div class="col-md-6 contact-center">
+                        <form enctype="multipart/form-data" method="post" class="signin-form">
+                            {% csrf_token %}
+                                <input type="text" name="t3" id="w3lName" placeholder="Name" value="{{d.name}}"
+                                    class="contact-input" required="" />
+                                <!-- <input type="email" name="email" id="w3lSender" placeholder="Your Email*" -->
+                                    <!-- class="contact-input" required="" /> -->
+                                <input type="text" name="t4" id="w3lSubect" placeholder="contact" value="{{d.contact}}"
+                                    class="contact-input" required="" />
+                                <!-- <input type="password" name="psw" id="w3lWebsite" placeholder="Your Password*" -->
+                                    <!-- class="contact-input" required="" /> -->
+                                    <input type="text" name="t5" id="w3lWebsite" placeholder="Skills" value="{{d.skills}}"
+                                    class="contact-input" required="" />
+                                    <input type="text" name="t6" id="w3lWebsite" placeholder="Programming language" value="{{d.lang}}"
+                                    class="contact-input" required="" />
+
+                                    <!-- <input type="file" name="qual" id="w3lWebsite" placeholder="qualification*" -->
+                                    <!-- class="contact-input" required="" /> -->
+                                    <!-- <input type="file" name="prof" id="w3lWebsite" placeholder="Profile pic*" -->
+                                    <!-- class="contact-input" required="" /> -->
+                            
+                            <div class="form-input">
+                                <textarea name="t7" id="w3lMessage" placeholder="address" 
+                                    required="">{{d.address}}</textarea>
+                            </div>
+                            <button class="btn btn-style">Update</button>
+                        </form>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+
+
+        
+
+        {% if messages %}
+        {% for msg in messages %}
+        <script>alert('{{msg}}')</script>
+        {% endfor %}
+        {% endif %}
+
+
+
+
+
+
+{% endblock %}

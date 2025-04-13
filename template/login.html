@@ -1,0 +1,88 @@
+{% extends "commonbase.html" %}
+{% block content1 %}
+
+<html>
+    </body>
+    <!-- <form action="action_page.php">
+        <div class="container">
+            <h1>LOGIN</h1>
+             <p>please fill in this form to create an account.</p> 
+            <hr>
+            <table>
+                <tr>
+                    <td>
+                        <label for="email"><b>Email</b></label></td>
+                    <td>
+                         <input type="text" placeholder="Enter Email" name="email" id="email" required>
+            </td></tr>
+            <tr>
+                <td>
+                    <label for="email"><b>Password</b></label></td>
+                <td>
+                     <input type="password" placeholder="Enter password" name="email" id="email" required>
+        </td></tr>
+        <tr>
+            
+            <td>
+                 <button>Login</button>
+    </td></tr>
+        </table>
+        </div>
+         <div class="container signin"><p>already have an account?<a href="#">sign in</a>.</p></div> 
+    </form> -->
+
+
+
+    
+    <section class="w3l-contact py-5" id="contact">
+        <div class="container py-lg-5 py-4">
+            <div class="title-heading-w3 text-left mb-sm-5 mb-4">
+                <h2 class="title-heading-w3 text-center mb-sm-5 mb-4">LOGIN</h2>
+            </div>
+            <div class="row contact-block">
+                
+
+
+
+                <div class="col-md-6 contact-center" style="margin: auto;">
+                    <form enctype="multipart/form-data" method="post" class="signin-form">
+                        {% csrf_token %}
+                            <input type="email" name="uname" id="w3lName"  placeholder="Your Username*"
+                                class="contact-input" required="" />
+                            <input type="password" name="psw" id="w3lSender"  placeholder="Your Password*"
+                                class="contact-input" required="" />
+                            
+                        
+                        
+                        <button class="btn btn-style">Login</button>
+                    </form>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% if messages %}
+{% for msg in messages %}
+<script>alert('{{msg}}')</script>
+{% endfor %}
+{% endif %}
+
+
+{% endblock %}

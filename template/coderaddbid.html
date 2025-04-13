@@ -1,0 +1,89 @@
+{% extends 'commonbasecoder.html' %}
+{% block content3 %}
+    <!-- contact -->
+    <section class="contact py-5" id="contact">
+        <div class="container pt-md-5 pt-4">
+            <div class="title-heading-w3 text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
+                <h3 class="title-style bg-light">BID</h3>
+            </div>
+            <div class="main-grid-contact">
+                <div class="row">
+
+                    <!-- contact form -->
+                    <div class="col-lg-6 content-form-right p-0 order-lg-last order-first">
+                        <div class="form-w3ls p-5">
+                            <h4 class="mb-4 sec-title-w3 " style="color:white">Request Bid</h4>
+                            <form method="POST" enctype="multipart/form-data" style="width:1000px">
+                                {% csrf_token %}
+                                {% comment %} <div class="row mb-3">
+                                    <div class="col-sm-6 form-group mb-sm-0 mb-3">
+                                        <input class="form-control" type="text" name="w3lName" id="w3lName"
+                                            placeholder="First Name" required="">
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <input class="form-control" type="text" name="w3lName" id="w3lName"
+                                            placeholder="Last Name" required="">
+                                    </div>
+                                </div> {% endcomment %}
+                                <div class="form-group mb-3">
+                                    <input class="form-control" type="text" name="amount" id="w3lSender"
+                                        placeholder="Amount" required="">
+                                </div>
+                               
+                             
+                                <div class="form-group mb-3">
+                                    <input class="form-control" type="date" onchange="checkdate(this.value)" name="duedate" id="w3lName"
+                                        placeholder="Duedate" required="">
+                                </div>
+                                <div class="input-group1 text-end mt-4">
+                                    <button class="btn btn-style" type="submit">Submit </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var msg="{{msg}}";
+                if(msg!="")
+                {
+                    alert(msg);
+                }
+          
+        </script>
+    </section>
+    <!-- //contact -->
+
+    <script>
+        function checkdate(date) {
+            // alert(date);
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            dd = parseInt(dd) + 1;
+            if (dd < 10){
+                dd = '0' + String(dd)
+            }else{
+                dd = String(dd)
+            }
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
+        
+        if (date < today){
+            alert("Choose valid date");
+          document.getElementById("btnsubmit1").disabled = true
+          document.getElementById("btnsubmit1").title = 'Select Correct Date'
+        }else{
+          document.getElementById("btnsubmit1").disabled = false
+          document.getElementById("btnsubmit1").title = ''
+        }
+        }
+    </script>
+    {% if messages %}
+    {% for msg in messages %}
+    <script>alert("{{msg}}")</script>
+    {% endfor %}
+    {% endif %}
+
+   {% endblock %}

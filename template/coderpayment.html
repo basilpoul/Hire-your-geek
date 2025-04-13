@@ -1,0 +1,56 @@
+{% extends "commonbasecoder.html" %}
+{% block content3 %}
+<style>
+    th,td{
+        padding: 10px;
+        color:rgb(0, 0, 0);
+        font-size: large;
+
+    }
+    th{
+        background-color:steelblue;
+        color: white;
+
+    }
+    table{
+        margin-bottom: -50px;
+    }
+    </style>
+    <div style="margin: 50px; background-color: aliceblue;opacity: 87%;">
+        <h1 style="margin: 10px; color:black">Payment</h1>
+        <table border="1" style="margin-top: 40px;margin-left: 80px;">
+        <tr>
+            <th>BUYER NAME</th>
+            <th>PROJECT NAME</th>
+           <th>DATE</th>
+           <th>AMOUNT</th>
+          
+         
+            {% comment %} <th colspan="2">ACTION</th> {% endcomment %}
+        </tr>
+    
+   {% for d in data %}
+      <tr>
+        <td>{{d.wid.userid.name}}</td>
+        <td>{{d.wid.title}}</td>
+       
+        <td>{{d.date}}</td>
+       
+        <td>{{d.amt}}</td>
+       
+             
+           
+         
+                {% comment %} <td><a href="/adminupdatebuyer?uemail={{d.3}}&&status=1" style="color:green">Approve</a></td>
+             <td><a href="/adminupdatecust?uemail={{d.3}}&&status=-1" style="color:red">Reject</a></td> {% endcomment %}
+    
+    </tr>
+      {% endfor %}
+  
+        </table>
+    </div>
+
+
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends "commonbasecoder.html" %}
+{% block content3 %}
+ <!-- services block -->
+ <section class="home-about-w3l pt-lg-5 pb-5" id="features">
+    <div class="container py-md-5 py-4">
+        <div class="title-heading-w3 text-center mx-auto mb-4" style="max-width:500px;">
+            <h3 class="title-style bg-light">Services We're offering</h3>
+        </div>
+        <div class="row align-items-center">
+         {% for d in data %}
+         {% if d.status != "confirmed" %}
+            <div class="col-lg-4 col-sm-6 mt-sm-5 mt-4" style="width:500px;height:280px">
+                <div class="grids-1 active">
+                    <div class="icon-style">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h4  class="title-head mb-2 "><a href="" style="color:aliceblue">{{d.title}}</a></h4>
+                    <p style="color:aliceblue">{{d.desc}}</p>
+                    <p ><a href="../static{{d.rfile}}" style="color:aliceblue" download>Download synopsis</a></p>
+                    <a href="/coderaddbid?rid={{d.id}}" style="color:aliceblue" class="btn btn-style btn-style-primary mt-4">ADD BID<i
+                            class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+            {% endif %}
+           {% endfor %}
+           
+            {% comment %} <div class="col-lg-4 col-sm-6 mt-sm-5 mt-4">
+                <div class="grids-1">
+                    <div class="icon-style">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4 class="title-head mb-2"><a href="about.html">Creative Idea</a></h4>
+                    <p>Sed ut unde omnis iste natus error sit oluptatem accusa ntium dolo remque
+                        ladase.</p>
+                    <a href="about.html" class="btn btn-style btn-style-primary mt-4">Read More<i
+                            class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div> {% endcomment %}
+        </div>
+    </div>
+</section>
+<!-- services block -->
+
+
+<!-- //pricing block -->
+
+
+<!-- //footer -->
+
+<!-- Js scripts -->
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" title="Go to top">
+    <span class="fas fa-level-up-alt" aria-hidden="true"></span>
+</button>
+<script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+<!-- //move top -->
+
+<!-- common jquery plugin -->
+<script src="../static/assets/js/jquery-3.3.1.min.js"></script>
+<!-- //common jquery plugin -->
+
+<!-- theme switch js (light and dark)-->
+<script src="../static/assets/js/theme-change.js"></script>
+<!-- //theme switch js (light and dark)-->
+
+<!-- MENU-JS -->
+<script>
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+</script>
+<!-- //MENU-JS -->
+
+<!-- disable body scroll which navbar is in active -->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+<!-- //disable body scroll which navbar is in active -->
+
+<!-- bootstrap -->
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- //bootstrap -->
+<!-- //Js scripts -->
+</body>
+
+</html>
+{% endblock %}

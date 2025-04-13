@@ -1,0 +1,83 @@
+
+
+
+
+    {% extends 'commonbaseuser.html' %}
+    {% block content4 %}
+    <style>
+        th,td{
+            padding: 10px;
+        }
+        th{
+            background-color:rgb(0, 0, 0);
+            color: white;
+        }
+        table{margin-bottom: -50px;}
+        </style>
+        <div style="margin: 50px; background-color: rgb(210, 232, 251);">
+            <h1 style="margin: 10px;">Approved Work</h1>
+            <table border="1" style="margin-top: 40px;margin-left: 80px;">
+            <tr>
+                <th>PROJECT NAME</th>
+                <th>PHOTO</th>
+                <th>CODER NAME</th>
+                
+                <th>EMAIL</th>
+                <th>CONTACT</th>
+                <!-- <th>QUALIFICATION</th> -->
+                <!-- <th>EXPERIENCE</th> -->
+                <th>LANGUAGE</th>
+               
+                <th>DUE DATE</th>
+              
+                <th>AMOUNT</th>
+                <th>CHAT</th>
+
+                <th>STATUS</th>
+              
+             
+                {% comment %} <th colspan="2">ACTION</th> {% endcomment %}
+            </tr>
+        
+       {% for d in data %}
+          <tr>
+            <td>{{d.title}}</td>
+            <td><a href="../static/media/{{d.cid.profile}}" download><img src="../static/media/{{d.cid.profile}}" download="../static/media/{{d.rfile}}" height="200px" width="200px"></a></td> 
+          
+            <td>{{d.cid.name}}</td>
+           
+            <td>{{d.cid.email}}</td>
+            <td>{{d.cid.contact}}</td>
+            <!-- <td><img src="../static/media/{{d.cid.qualification}}" download="../static/media/{{d.qualification}}" height="200px" width="200px"></td> -->
+            <td>{{d.cid.lang}}</td>
+           
+
+       <!-- <td><a href="../static{{d.7}}" download><img src="../static{{d.7}}" download="../static{{d.7}}" height="200px" width="200px"></a></td>  -->
+       <td>{{d.tforw}}</td> 
+       <td>{{d.amount}}</td> 
+       <td><a href="/inchat?email={{d.cid.email}}">Chat</a></td>
+       <td>{{d.status}}</td>  
+       {% if d.status == '100 percent completed' %}
+       <td><a href="/buyermakepayment?rid={{d.bidid.rid.id}}&&wid={{d.id}}" style="color:red">Payment</a></td> 
+       {% endif %}
+       {% if d.status == 'paid' %}
+       <td><a href="/buyerfeedback?wid={{d.cid.id}}&&ciid={{d.id}}" style="color:red">Feedback</a></td> 
+       {% endif %}
+       {% comment %}      <td><a href="../static{{d.9}}" download><img src="../static{{d.9}}" download="../static{{d.9}}" height="200px" width="200px"></a></td> 
+       {% endcomment %}
+                 
+               
+             
+                    {% comment %} <td><a href="/adminupdatebuyer?uemail={{d.3}}&&status=1" style="color:green">Approve</a></td>
+                 <td><a href="/adminupdatecust?uemail={{d.3}}&&status=-1" style="color:red">Reject</a></td> {% endcomment %}
+        
+        </tr>
+          {% endfor %}
+      
+            </table>
+        </div>
+
+
+        </div>
+       {% endblock %}
+    

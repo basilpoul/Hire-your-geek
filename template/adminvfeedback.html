@@ -1,0 +1,94 @@
+{% extends "commonbaseadmin.html" %}
+{% block content2 %}
+<style>
+    th,td{
+        padding: 10px;
+        color: white;
+    }
+    th{
+        background-color:steelblue;
+        color: white;
+    }
+    </style>
+    
+   <u> <h1 style="margin-left: 200px;margin-bottom: 50px; color:white">Login Activity</h1></u>
+   {% if user %}
+   <h3 style="margin-left: 300px; color:aliceblue">{{ndate}}</h3>
+   {% endif %}
+
+
+
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;" class="bg-light">Feedbacks</h1>
+        <table border="1" style="margin-top: 40px;margin-left: 80px;">
+        <tr>
+            <th>CONTENT</th>
+            <th>DATE</th>
+            <th>SENDER</th>
+            
+            
+          
+         
+            {% comment %} <th colspan="2">ACTION</th> {% endcomment %}
+        </tr>
+    
+   {% for d in data %}
+      <tr>
+        <td>{{d.con}}</td>
+        <td>{{d.date}}</td>
+        <td>{{d.sender}}</td> 
+      
+       
+    
+    </tr>
+      {% endfor %}
+  
+        </table>
+    </div>
+
+
+    </div>
+
+
+    {% if coder %}
+    {% if coder.alert == "not send" %}
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/breadcrumbs-bg.jpg');">
+        <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+    
+            <!-- <h2>Pump</h2> -->
+            <h2 style="color:white;padding:40px">MESSAGE</h2>
+    
+        </div>
+    </div><!-- End Breadcrumbs -->
+    
+    <!-- ======= Contact Section ======= -->
+    <!-- End Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+    
+    
+    
+    
+                      <form method="post">
+                        {% csrf_token %}
+                      
+                        <div class="text-center mt-3"><textarea class="form-control" rows="5" name="msg" placeholder="Alert for the Coder" required></textarea></div>
+                        <br>
+                        <div class="text-center mt-3"><button type="submit" name="submit" class="btn btn-warning">Submit</button></div><br>
+                    </form>
+                </div><!-- End Contact Form -->
+    
+            </div>
+    
+        </div>
+        {% endif %}
+{% endif %}
+
+
+{% if messages %}
+{% for msg in messages %}
+<script>alert("{{msg}}")</script>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

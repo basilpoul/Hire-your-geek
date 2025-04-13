@@ -1,0 +1,83 @@
+
+
+
+
+    {% extends 'commonbaseuser.html' %}
+    {% block content4 %}
+    <style>
+        th,td{
+            padding: 10px;
+
+        }
+        th{
+            background-color:steelblue;
+            color: white;
+        }
+        table{
+            margin-bottom: -50px;
+        }
+        </style>
+        <div style="margin: 50px; background-color: beige;opacity:90%">
+            <h1 style="margin: 10px; " align="center">Biddings</h1>
+            <table border="1" style="margin-top: 40px;margin-left: 80px;">
+            <tr>
+              
+                <th>TITLE</th>
+                <th>DESCRIPTION</th>
+                <th>DUE DATE</th>
+              
+                <th>SYNOPSIS</th>
+                <th>AMOUNT</th>
+                <th>STATUS</th>
+                <th>ACTION</th>
+              
+             
+                {% comment %} <th colspan="2">ACTION</th> {% endcomment %}
+            </tr>
+        
+       {% for d in data %}
+       {% if d.status == "requested" %}
+          <tr>
+           
+            <!-- <td>{{d.rid.rfile}}</td> -->
+            <!-- <td>{{d.12}}</td> -->
+            <td>{{d.rid.title}}</td>
+            <td>{{d.rid.desc}}</td>
+            <td>{{d.duedate}}</td>
+           
+           
+           
+
+       <td><a href="../static{{d.14}}" download><img src="../static/media/{{d.rid.rfile}}" download="../static{{d.14}}" height="200px" width="200px"></a></td> 
+       <td>{{d.amt}}</td>
+       <td>{{d.status}}</td> 
+         
+       {% comment %}      <td><a href="../static{{d.9}}" download><img src="../static{{d.9}}" download="../static{{d.9}}" height="200px" width="200px"></a></td> 
+       {% endcomment %}
+                 
+               
+             
+                    {% comment %} <td><a href="/adminupdatebuyer?uemail={{d.3}}&&status=1" style="color:green">Approve</a></td> {% endcomment %}
+                 <td><a href="/bidapprove?id={{d.id}}" style="color:red">Approve</a></td>
+                 <td><a href="/bidreject?id={{d.id}}" style="color:red">Reject</a></td>
+
+        
+        </tr>
+        {% endif %}
+          {% endfor %}
+      
+            </table>
+        </div>
+
+
+        </div>
+
+        
+    {% if messages %}
+    {% for msg in messages %}
+    <script>alert('{{msg}}')</script>
+    {% endfor %}
+    {% endif %}
+
+       {% endblock %}
+    
